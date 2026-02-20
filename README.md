@@ -26,11 +26,11 @@
    ⠋⠁⠀⠀⠀⠀⠈⠑⠿⢶⣄⣀⣀⣀⣀⣀⣄⣤⡶⠿⠟⠋⠁⠀⠀⠀        Written in Rust (inspired by C algorithm by Kvho)
 ```
 
-# Bakeru (化ける) - Shapeshifter Solver
+# Bakeru (化ける) - A Neopets Shapeshifter Solver
 
 **Bakeru (化ける)**, meaning "to transform" in Japanese, is a modern **Tauri Application** designed to help solve the Neopets game **Shapeshifter**. It features a Rust backend supplied with a low-level, pointer-optimized backtracking algorithm, paired with a clean React-based user interface.
 
-Originally, when I built this tool, it was built as a Windows-only Visual Studio C# application. While functional, the interface was clunky and difficult to maintain. And the application was not cross-platform. This complete rewrite into the Tauri ecosystem provides that support, a more responsive UI, and similar solving speeds.
+Originally, when I built this tool, it was built as a Windows-only Visual Studio C# application. While functional, the interface was clunky and difficult to maintain. And the application was not cross-platform. This complete rewrite into the Tauri ecosystem provides that support, a more responsive UI, and improved solving speeds.
 
 Official releases for Windows, Linux, and macOS can be found under the **[Releases](https://github.com/willnjohnson/Bakeru/releases)** section.
 
@@ -51,7 +51,7 @@ https://github.com/user-attachments/assets/c0d20991-20ed-4c42-a806-5f160fa818a7
 ## Features
 
 *   **Fast HTML Parsing:** Instantly extracts the grid state and token shapes from the Neopets source code.
-*   **Native Performance:** Core solver implemented in Rust using raw pointers and aggressive optimization profiles, with similar performance to the original C implementation.
+*   **Native Performance:** Core solver implemented in Rust using raw pointers and aggressive optimization profiles, with better performance to the original C implementation.
 *   **Asynchronous Solving:** The solver runs on a separate thread, keeping the UI fluid and responsive even during multi-minute searches for high-level puzzles.
 *   **Progressive UI:** Visual board preview that updates with your progress through the solution steps.
 *   **Symmetry Pruning:** Detects equivalent tokens to avoid redundant search permutations, critical for levels 40+.
@@ -117,13 +117,15 @@ The app has evolved through a couple iterations:
 
 ![Speed Comparison](https://github.com/user-attachments/assets/022e97da-e924-4b11-80bb-a541875d0f9a)
 
-The Rust implementation yields an additional ~6 seconds of improvement over the C DLL version, quite a noticeable speedup while reducing code size.
+On level 48, the Rust implementation yields an additional ~6 seconds of improvement over the C DLL version, quite a noticeable speedup while reducing code size.
+
+**Note:** This is by no means a full benchmark. However, from my experience, this Rust implementation is faster.
 
 ---
 
 ## Contributions
 
-Special thanks to [Kvho](https://raw.githubusercontent.com/jimrustle/neopets-shapeshifter/1c31a419971de3f25cac9a5dfc4fa32ca4aa7605/kvho_ss/ss.c) for the highly optimized DFS backtracking logic implemented in C, the inspiration for the Rust port.
+Special thanks to [Kvho](https://raw.githubusercontent.com/jimrustle/neopets-shapeshifter/1c31a419971de3f25cac9a5dfc4fa32ca4aa7605/kvho_ss/ss.c) for the highly optimized DFS backtracking logic implemented in C, the inspiration for the now robust Rust port.
 
 ---
 
