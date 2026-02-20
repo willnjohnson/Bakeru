@@ -34,9 +34,10 @@ Originally, when I built this tool, it was built as a Windows-only Visual Studio
 
 Official releases for Windows, Linux, and macOS can be found under the **[Releases](https://github.com/willnjohnson/Bakeru/releases)** section.
 
-You can add this **[GreaseMonkey script](https://greasyfork.org/en/scripts/566826-bakeru-web-visualizer-for-shapeshifter)** to your GreaseMonkey/TamperMonkey extension for browser convenience:
-* Quickly extract puzzle data with a "Copy HTML" button.
-* Visual symbol replacement to match the solver's clean interface.
+> [!IMPORTANT]
+> Please add this **[GreaseMonkey script](https://greasyfork.org/en/scripts/566826-bakeru-web-visualizer-for-shapeshifter)** to your GreaseMonkey/TamperMonkey extension for browser convenience, which will:
+> * Help quickly extract puzzle data with a "Copy HTML" button.
+> * Provide visual symbol replacement to match the solver's clean interface.
 
 ## App Preview
 
