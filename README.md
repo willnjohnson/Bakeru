@@ -39,10 +39,14 @@ Official releases for Windows, Linux, and macOS can be found under the **[Releas
 > * Help quickly extract puzzle data with a "Copy HTML" button.
 > * Provide visual symbol replacement to match the solver's clean interface.
 
+> [!WARNING]
+> App might fail to give proper steps at **Level 1** (i.e. provides 1 step instead of 2 steps), but hey, you can solve it... It's really easy!
+> 
+> But it works flawlessly for **Levels 2-100.**
+
 ## App Preview
 
-> [!IMPORTANT]
-> **TODO:** Add preview of the app.
+https://github.com/user-attachments/assets/c0d20991-20ed-4c42-a806-5f160fa818a7
 
 ## Features
 
@@ -60,7 +64,7 @@ Official releases for Windows, Linux, and macOS can be found under the **[Releas
 
 ## Requirements
 
-*   **Windows**: `.exe` or `.msi` installers.
+*   **Windows**: `.msi` installers.
 *   **Linux**: `.AppImage`, `.deb`, or `.rpm` packages.
 *   **macOS**: `.dmg` or `.app` bundles.
 *   *Note: Binaries are available in the GitHub Releases section.*
@@ -87,7 +91,7 @@ Throughout its development, this project has explored several search strategies 
 1.  **Recursive Depth-First Search (DFS):** The fundamental approach, exploring every possible placement sequence.
 2.  **A-Star & IDA-Star (Iterative Deepening A-Star):** Guided search using the number of non-goal cells as a heuristic. While robust, these often suffered from high memory usage or redundant re-explorations.
 3.  **The Chosen Approach: Optimized Backtracking with Symmetry Pruning:** 
-    *   **Low-Level Rust Implementation:** Uses raw pointers to achieve performance parity with original C solvers.
+    *   **Low-Level Rust Implementation:** Uses raw pointers to achieve performance parity with original C solver.
     *   **In-Place State Toggling:** Modifies the grid state directly and reverses changes during backtracking to avoid expensive allocations.
     *   **Pruning:** Aggressively prunes branches using a "toggle budget" and by identifying equivalent token shapes to skip redundant permutations.
 
@@ -101,12 +105,19 @@ Throughout its development, this project has explored several search strategies 
 
 ---
 
-## Benchmarks
+## Speed Comparison
 
-I managed to port Kvho's code (532 lines, not counting comments or whitespace) to Rust in 199 lines (not counting comments or whitespace). Below is the comparison of performance for different levels:
+The app has evolved through a couple iterations:
 
-> [!IMPORTANT]
-> **TODO:** Add benchmark comparing speeds.
+1. **Version 1 (C#)** – The backtracking and pruning algorithm was written entirely in C#. Performance was slow for larger inputs.  
+2. **Version 2 (C DLL)** – Ported Kvho’s code to a C DLL and integrated it into the C# app, improving speed significantly.  
+3. **Version 3 (Rust + Tauri)** – Reimplemented Kvho’s 532-line algorithm in Rust (199 lines excluding comments and whitespace) and integrated it into a Tauri app. 
+
+**Left: Tauri app using Rust (18.51s) v.s. Right: Visual C# app using C DLL (~24-25s)**
+
+![Speed Comparison](https://github.com/user-attachments/assets/022e97da-e924-4b11-80bb-a541875d0f9a)
+
+The Rust implementation yields an additional ~6 seconds of improvement over the C DLL version, quite a noticeable speedup while reducing code size.
 
 ---
 
