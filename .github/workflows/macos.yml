@@ -2,7 +2,7 @@ name: Build Bakeru macOS
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
