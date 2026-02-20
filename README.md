@@ -1,5 +1,5 @@
 ``` 
-                            @@@@@@@\            @@\     
+                              @@@@@@@\            @@\     
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀@@  __@@\           @@ |
 ⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡈⢯⡉⠓⠦⣄⡀⠀⠀⠀⠀⠀ @@ |  @@ | @@@@@@\  @@ |  @@\  @@@@@@\   @@@@@@\  @@\   @@\ ⠀              
 ⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣉⠹⠷⠀⠀⠀⠙⢷⡀⠀⠀⠀⠀@@@@@@@\ | \____@@\ @@ | @@  |@@  __@@\ @@  __@@\ @@ |  @@ |
@@ -40,7 +40,8 @@ You can add this **[GreaseMonkey script](https://greasyfork.org/en/scripts/56682
 
 ## App Preview
 
-To be updated
+> [!IMPORTANT]
+> **TODO:** Add preview of the app.
 
 ## Features
 
@@ -99,9 +100,18 @@ Throughout its development, this project has explored several search strategies 
 
 ---
 
+## Benchmarks
+
+I managed to port Kvho's code (532 lines, not counting comments or whitespace) to Rust in 199 lines (not counting comments or whitespace). Below is the comparison of performance for different levels:
+
+> [!IMPORTANT]
+> **TODO:** Add benchmark comparing speeds.
+
+---
+
 ## Contributions
 
-Special thanks to Kvho for the highly optimized DFS backtracking logic originally implemented in C.
+Special thanks to [Kvho](https://raw.githubusercontent.com/jimrustle/neopets-shapeshifter/1c31a419971de3f25cac9a5dfc4fa32ca4aa7605/kvho_ss/ss.c) for the highly optimized DFS backtracking logic implemented in C, the inspiration for the Rust port.
 
 ---
 
