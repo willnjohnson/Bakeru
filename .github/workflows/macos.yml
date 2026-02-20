@@ -8,6 +8,11 @@ on:
 jobs:
   build-macos:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            arch: arm64
 
     steps:
       - name: Checkout
@@ -16,7 +21,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: universal-apple-darwin
+          targets: ${{ matrix.target }}
 
       - name: Install Node
         uses: actions/setup-node@v4
@@ -30,10 +35,10 @@ jobs:
         run: cargo install tauri-cli --locked
 
       - name: Build Bakeru
-        run: npm run tauri build
+        run: npm run tauri build -- --target ${{ matrix.target }}
 
       - name: Upload DMG
         uses: actions/upload-artifact@v4
         with:
-          name: bakeru-macos
-          path: src-tauri/target/release/bundle/dmg/*.dmg
+          name: bakeru-macos-${{ matrix.arch }}
+          path: src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
