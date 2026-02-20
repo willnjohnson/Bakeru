@@ -30,15 +30,17 @@ jobs:
 
       - name: Install frontend deps
         run: npm install
+        working-directory: ./bakeru
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --locked
 
       - name: Build Bakeru
         run: npm run tauri build -- --target ${{ matrix.target }}
+        working-directory: ./bakeru
 
       - name: Upload DMG
         uses: actions/upload-artifact@v4
         with:
           name: bakeru-macos-${{ matrix.arch }}
-          path: src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
+          path: bakeru/src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
