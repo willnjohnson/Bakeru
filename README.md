@@ -26,13 +26,13 @@
    ⠋⠁⠀⠀⠀⠀⠈⠑⠿⢶⣄⣀⣀⣀⣀⣀⣄⣤⡶⠿⠟⠋⠁⠀⠀⠀        Written in Rust (inspired by C algorithm by Kvho)
 ```
 
-# Bakeru (化ける) - A Neopets Shapeshifter Solver
+
+
+# <img width="32" height="32" src="https://github.com/willnjohnson/Bakeru/blob/master/bakeru/src/assets/favicon.png?raw=true" /> Bakeru (化ける) - A Neopets Shapeshifter Solver
 
 **Bakeru (化ける)**, meaning "to transform" in Japanese, is a modern **Tauri Application** designed to help solve the Neopets game **Shapeshifter**. It features a Rust backend supplied with a low-level, pointer-optimized backtracking algorithm, paired with a clean React-based user interface.
 
 Originally, when I built this tool, it was built as a Windows-only Visual Studio C# application. While functional, the interface was clunky and difficult to maintain. And the application was not cross-platform. This complete rewrite into the Tauri ecosystem provides that support, a more responsive UI, and improved solving speeds.
-
-Official releases for Windows, Linux, and macOS can be found under the **[Releases](https://github.com/willnjohnson/Bakeru/releases)** section.
 
 > [!IMPORTANT]
 > Please add this **[GreaseMonkey script](https://greasyfork.org/en/scripts/566826-bakeru-web-visualizer-for-shapeshifter)** to your GreaseMonkey/TamperMonkey extension for browser convenience, which will:
@@ -43,6 +43,16 @@ Official releases for Windows, Linux, and macOS can be found under the **[Releas
 > App might fail to give proper steps at **Level 1** (i.e. provides 1 step instead of 2 steps), but hey, you can solve it... It's really easy!
 > 
 > But it works flawlessly for **Levels 2-100.**
+
+## Downloads
+
+| **Windows** | **Linux** | **macOS** |
+| :--- | :--- | :--- |
+| [![Windows](https://img.shields.io/badge/Windows-MSI-2b3137?logo=windows&style=for-the-badge&logoColor=white&labelColor=0078D4)](https://github.com/willnjohnson/Bakeru/releases/download/3.1.0-release/bakeru_3.1.0_x64_en-US.msi) | [![AppImage](https://img.shields.io/badge/AppImage-Universal-2b3137?logo=linux&style=for-the-badge&logoColor=white&labelColor=663399)](https://github.com/willnjohnson/Bakeru/releases/download/3.1.0-release/bakeru_3.1.0.x86_64.AppImage) | [![macOS](https://img.shields.io/badge/macOS-DMG-2b3137?logo=apple&style=for-the-badge&logoColor=white&labelColor=000000)](https://github.com/willnjohnson/Bakeru/releases/download/3.1.0-release/bakeru_3.1.0_aarch64.dmg) |
+| | [![Ubuntu/Debian](https://img.shields.io/badge/Ubuntu%20%2F%20Debian-DEB-2b3137?logo=ubuntu&style=for-the-badge&logoColor=white&labelColor=E95420)](https://github.com/willnjohnson/Bakeru/releases/download/3.1.0-release/bakeru_3.1.0_amd64.deb) | |
+| | [![Fedora/RHEL](https://img.shields.io/badge/Fedora%20%2F%20RHEL-RPM-2b3137?logo=fedora&style=for-the-badge&logoColor=white&labelColor=EE0000)](https://github.com/willnjohnson/Bakeru/releases/download/3.1.0-release/bakeru-3.1.0-1.x86_64.rpm) | |
+
+Official releases for Windows, Linux, and macOS can be found under the **[Releases](https://github.com/willnjohnson/Bakeru/releases)** section.
 
 ## App Preview
 
