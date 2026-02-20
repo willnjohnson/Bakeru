@@ -44,7 +44,9 @@ Originally, when I built this tool, it was built as a Windows-only Visual Studio
 > 
 > But it works flawlessly for **Levels 2-100.**
 
-## Downloads
+## Installation
+
+No need to install any dependencies. Just a simple installation:
 
 | **Windows** | **Linux** | **macOS** |
 | :--- | :--- | :--- |
@@ -71,13 +73,6 @@ https://github.com/user-attachments/assets/c0d20991-20ed-4c42-a806-5f160fa818a7
 *   **Grid Layout:** The $M \times N$ board containing various token types.
 *   **Token Sequence:** The specific set of puzzle shapes provided by the game for the current level.
 *   **Goal:** The specific token type (usually swords) that all cells must match to win.
-
-## Requirements
-
-*   **Windows**: `.msi` installers.
-*   **Linux**: `.AppImage`, `.deb`, or `.rpm` packages.
-*   **macOS**: `.dmg` or `.app` bundles.
-*   *Note: Binaries are available in the GitHub Releases section.*
 
 ## Usage
 
