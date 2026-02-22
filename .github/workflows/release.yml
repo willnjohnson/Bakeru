@@ -1,0 +1,163 @@
+name: Build and Release Bakeru
+
+on:
+  push:
+    tags:
+      - '*-release'
+  workflow_dispatch:
+
+jobs:
+  # Build for macOS
+  build-macos:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            arch: arm64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install frontend deps
+        run: npm install
+        working-directory: ./bakeru
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --locked
+
+      - name: Build Bakeru
+        run: npm run tauri build -- --target ${{ matrix.target }}
+        working-directory: ./bakeru
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeru-macos-${{ matrix.arch }}
+          path: bakeru/src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
+
+  # Build for Linux
+  build-linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install frontend deps
+        run: npm install
+        working-directory: ./bakeru
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --locked
+
+      - name: Build Bakeru (AppImage, DEB, RPM)
+        run: |
+          npm run tauri build -- --bundles appimage,deb,rpm
+        working-directory: ./bakeru
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeru-linux-appimage
+          path: bakeru/src-tauri/target/release/bundle/appimage/*.AppImage
+
+      - name: Upload DEB
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeru-linux-deb
+          path: bakeru/src-tauri/target/release/bundle/deb/*.deb
+
+      - name: Upload RPM
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeru-linux-rpm
+          path: bakeru/src-tauri/target/release/bundle/rpm/*.rpm
+
+  # Build for Windows
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install frontend deps
+        run: npm install
+        working-directory: ./bakeru
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --locked
+
+      - name: Build Bakeru (MSI)
+        run: |
+          npm run tauri build -- --bundles msi
+        working-directory: ./bakeru
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
+      - name: Upload MSI
+        uses: actions/upload-artifact@v4
+        with:
+          name: bakeru-windows-msi
+          path: bakeru/src-tauri/target/release/bundle/msi/*.msi
+
+  # Create GitHub Release
+  release:
+    needs: [build-macos, build-linux, build-windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/bakeru-macos-*/**/*.dmg
+            artifacts/bakeru-linux-appimage/**/*.AppImage
+            artifacts/bakeru-linux-deb/**/*.deb
+            artifacts/bakeru-linux-rpm/**/*.rpm
+            artifacts/bakeru-windows-msi/**/*.msi
+          draft: false
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
