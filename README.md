@@ -19,7 +19,7 @@
 ⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡇⢷⡏⠃⢠⠇⠀⠀⣀⠄⠀⠀⠀⣿⡖⠀⠀ %@=   @@-    #@#   @@#    *@@@           @@+  %@@@@@ 
 ⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡇⢨⠇⠀⡼⢀⠔⠊⠀⠀⠀⠀⠀⠘⣯⣄⢀ %@=   -@@@@@@@@           @@.             -@@@@@@=   
 ⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⣼⡀⣰⣷⠁⠀⠀⠀⠀⠀⠀⠀⠀⣇⢻⣧⡄      
-⠀ ⠀⠀⠀⠀⠀⠀⣀⣮⣿⣿⣿⣯⡭⢉⠟⠛⠳⢤⣄⣀⣀⣀⣀⡴⢠⠨⢻⣿      Version 3.1.0
+⠀ ⠀⠀⠀⠀⠀⠀⣀⣮⣿⣿⣿⣯⡭⢉⠟⠛⠳⢤⣄⣀⣀⣀⣀⡴⢠⠨⢻⣿      Version 3.2.1
 ⠀ ⠀   ⢀⣾⣿⣿⣿⣿⢏⠓⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢨⣿      
 ⠀    ⣰⣿⣿⣿⣿⣿⣿⡱⠌⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢭⣾⠏        Tauri Application by @willnjohnson
     ⣰⡿⠟⠋⠛⢿⣿⣿⊊⠡⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⢀⣠⣼⡿⠋⠀
@@ -38,11 +38,6 @@ Originally, when I built this tool, it was built as a Windows-only Visual Studio
 > Please add this **[GreaseMonkey script](https://greasyfork.org/en/scripts/566826-bakeru-web-visualizer-for-shapeshifter)** to your GreaseMonkey/TamperMonkey extension for browser convenience, which will:
 > * Help quickly extract puzzle data with a "Copy HTML" button.
 > * Provide visual symbol replacement to match the solver's clean interface.
-
-> [!WARNING]
-> App might fail to give proper steps at **Level 1** (i.e. provides 1 step instead of 2 steps), but hey, you can solve it... It's really easy!
-> 
-> But it works flawlessly for **Levels 2-100.**
 
 ## Installation
 
@@ -106,6 +101,7 @@ Throughout its development, this project has explored several search strategies 
 
 *   **ShapeShifter algorithm:** [Dr. Plank's lab writeup explanation](https://web.archive.org/web/20240418234629/https://web.eecs.utk.edu/~jplank/plank/classes/cs202/Labs/Lab9/)
 *   **A-Star Heuristic search:** [CMU AI Course PDF](https://www.cs.cmu.edu/~cga/ai-course/astar.pdf)
+*   **Lights Out: Solutions Using Linear Algebra:** [Madsen Lights Out PDF](http://cau.ac.kr/~mhhgtx/courses/LinearAlgebra/references/MadsenLightsOut.pdf)
 *   **She Who Shapes:** [Historical Shapeshifter Resource](https://shewhoshapes.wordpress.com/)
 
 ---
