@@ -1,12 +1,12 @@
 [package]
-name = "tauri_app"
-version = "3.1.0"
-description = "A Tauri App"
-authors = ["William", "KVHO"]
+name = "bakeru"
+version = "3.2.1"
+description = "A Shapeshifter Solver"
+authors = ["William", "Kvho"]
 edition = "2021"
 
 [lib]
-name = "tauri_app_lib"
+name = "bakeru_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

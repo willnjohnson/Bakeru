@@ -187,6 +187,39 @@ body {
   align-items: center;
 }
 
+.parallel-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #FBE9CE;
+}
+
+.parallel-toggle input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.threads-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #FBE9CE;
+}
+
+.threads-control input {
+  width: 50px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #FBE9CE;
+  background-color: #2c1810;
+  color: #FBE9CE;
+  font-size: 14px;
+}
+
 .result-container {
   width: 100%;
   max-width: 1000px;
